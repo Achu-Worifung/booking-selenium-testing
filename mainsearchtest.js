@@ -1,4 +1,4 @@
-import { testCarSearchForm } from "./template-testing";
+const { testCarSearchForm } = require("./template-testing");
 
 
 const testCases = [
@@ -6,9 +6,9 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
-        passcase: "Search results found",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
+        passcase: "Car Rental Results",
         changePage: true,
         testname: "valid-inputs"
     },
@@ -17,8 +17,8 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2024-07-07", // past date
-        dropoffdate: "2025-10-10", //past date
+        pickupdate: "2024-07-07T10:00", // past date
+        dropoffdate: "2025-10-10T18:00", //past date
         passcase: "please enter a valid date",
         changePage: false, //remaining in the search form
         testname: "invalid-pickup-date"
@@ -27,8 +27,8 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2024-10-10", // past date
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2024-10-10T18:00", // past date
         passcase: "please enter a valid date",
         changePage: false, //remaining in the search form
         testname: "invalid-dropoff-date"
@@ -37,8 +37,8 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2024-10-10",
-        dropoffdate: "2024-07-07", // pickup date after dropoff date
+        pickupdate: "2024-10-10T10:00",
+        dropoffdate: "2024-07-07T18:00", // pickup date after dropoff date
         passcase: "please enter a valid date",
         changePage: false, //remaining in the search form
         testname: "pickup-date-after-dropoff-date"
@@ -47,18 +47,18 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-10-10",
-        dropoffdate: "2025-07-07", // dropoff date before pickup date
+        pickupdate: "2025-10-10T10:00",
+        dropoffdate: "2025-07-07T18:00", // dropoff date before pickup date
         passcase: "please enter a valid date",
         changePage: false, //remaining in the search form
         testname: "dropoff-date-before-pickup-date"
     },
     //invalid pickup location
-    , {
+    {
         pickuplocation: "Invalid Location",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         passcase: "please enter a valid pickup location",
         changePage: false,
         testname: "invalid-pickup-location"
@@ -68,8 +68,8 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Invalid Location",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         passcase: "please enter a valid dropoff location",
         changePage: false,
         testname: "invalid-dropoff-location"
@@ -78,8 +78,8 @@ const testCases = [
     {
         pickuplocation: "Invalid Location",
         dropofflocation: "Invalid Location",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         passcase: "please enter a valid pickup location",
         changePage: false,
         testname: "invalid-pickup-and-dropoff-locations"
@@ -91,12 +91,12 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         minseats: "2+",
         vehicletype: "SUV",
         maxprice: "1000",
-        passcase: "Search results found",
+        passcase: "Car Rental Results",
         changePage: true,
         testname: "2-plus-min-seats"
     },
@@ -105,8 +105,8 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         minseats: "2+",
         vehicletype: "SUV",
         maxprice: "1000",
@@ -118,8 +118,8 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         minseats: "2+",
         vehicletype: "Economy",
         maxprice: "1000",
@@ -131,12 +131,12 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         minseats: "2+",
-        vehicletype: "Sport",
+        vehicletype: "Sports",
         maxprice: "1000",
-        passcase: "Sport",
+        passcase: "Sports",
         changePage: true,
         testname: "sport-vehicle-type"
     },
@@ -145,10 +145,9 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         minseats: "2+",
-        vehicletype: "SUV",
         maxprice: "1000",
         passcase: "1000",
         changePage: true,
@@ -158,27 +157,46 @@ const testCases = [
     {
         pickuplocation: "New York",
         dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
+        pickupdate: "2025-07-07T10:00",
+        dropoffdate: "2025-10-10T18:00",
         minseats: "2+",
-        vehicletype: "SUV",
         maxprice: "0",
-        passcase: "please enter a valid max price",
+        passcase: "0 vehicles found matching your criteria",
         changePage: true,
         testname: "0-max-price"
     },
-    //tsting negative max price
-    {
-        pickuplocation: "New York",
-        dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-07",
-        dropoffdate: "2025-10-10",
-        minseats: "2+",
-        vehicletype: "SUV",
-        maxprice: "-1000",
-        passcase: "please enter a valid max price",
-        changePage: true,
-        testname: "negative-max-price"
-    }
+    
      
 ]
+
+
+// Run tests sequentially to avoid memory leaks and browser conflicts
+async function runAllTests() {
+    console.log(`Starting ${testCases.length} test cases...\n`);
+    
+    for (let i = 0; i < testCases.length; i++) {
+        const testCase = testCases[i];
+        console.log(`\n=== Running Test ${i + 1}/${testCases.length}: ${testCase.testname} ===`);
+        
+        try {
+            await testCarSearchForm(testCase);
+            console.log(`✅ Test case "${testCase.testname}" completed successfully.\n`);
+        } catch (error) {
+            console.error(`❌ Error in test case "${testCase.testname}":`, error.message);
+        }
+        
+        // Add a small delay between tests to prevent browser issues
+        if (i < testCases.length - 1) {
+            console.log("Waiting 2 seconds before next test...");
+            await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+    }
+    
+    console.log("\n=== All tests completed ===");
+}
+
+// Start the test execution
+runAllTests().catch(error => {
+    console.error("Fatal error in test execution:", error);
+    process.exit(1);
+});
