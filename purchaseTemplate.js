@@ -20,6 +20,7 @@ async function testCarPayment({
   testName,
 }) {
   let driver = await new Builder().forBrowser("chrome").build();
+  driver.maximizeWindow();
   
   try {
     console.log(`\n💳 Running payment test: ${testName}`);

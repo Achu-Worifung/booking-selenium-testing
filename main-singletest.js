@@ -1,14 +1,15 @@
 const { testCarSearchForm } = require("./searchtest");
 
 (async () => await testCarSearchForm(  {
-        pickuplocation: "New York",
-        dropofflocation: "Los Angeles",
-        pickupdate: "2025-07-08T10:00",
-        dropoffdate: "2025-07-10T18:00",
-        maxprice: 0,
-        passcase: "0 vehicles found matching your criteria",
-        changePage: true,
-        testname: "0-max-price-test"
+        pickuplocation: "Los Angeles, CA",
+       dropofflocation: "Phoenix, AZ",
+        pickupdate: "2025-08-08T10:00",
+        dropoffdate: "2025-10-10T18:00",
+        minseats: "2+",
+        maxprice: "0",
+        passcase: "Max price cannot be less than $1",
+        changePage: false,
+        testname: "0-max-price"
     }))();
 
 

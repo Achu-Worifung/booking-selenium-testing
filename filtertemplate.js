@@ -10,6 +10,7 @@ async function testCarFilter({
     testname = "default-test"
 }) {
     let driver = await new Builder().forBrowser("chrome").build();
+    await driver.manage().window().maximize();
     
     try {
         console.log(`\n🔍 Starting filter test: ${testname}`);
